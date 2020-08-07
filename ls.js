@@ -1,5 +1,5 @@
 const fs = require('fs');
-const path = require('./pwd.js')
+// const path = require('./pwd.js')
 
 module.exports = function lsFunc() {
    fs.readdir('./',(err,files)=> {
