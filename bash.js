@@ -1,14 +1,19 @@
+//prompt
 process.stdout.write('prompt > ')
-process.stdin.on('data', (data)=> {
-    const cmd = data.toString().trim();
 
-    if (cmd === 'pwd') {
-        process.stdout.write(process.cwd())
-        process.stdout.write('\nprompt > ');
-    } else {
-    process.stdout.write('You typed: ' + cmd);
-    process.stdout.write('\nprompt > ');
-    }
-});
+//importing the function from pwd.js
+const cwdFunc = require('./pwd.js')
+const lsFunc = require('./ls.js')
+
+//get data from user
+process.stdin.on('data', (data) => {
+ const cmd = data.toString().trim();
+
+ switch(cmd) {
+    case 'pwd': cwdFunc()
+    case 'ls': lsFunc()
+
+ }
+})
 
 
