@@ -1,15 +1,8 @@
 const fs = require('fs');
-const path =require('./pwd.js')
 
-// fs.open( filename, flags, mode, callback )
-
-
-module.exports = fs.open(path(),'r',(err,files)=> {
-    if(err) {
-      throw err
-    }
-    else {
-      process.stdout.write(files.join('\n'))
-      process.stdout.write("\nprompt > ")
-     }
-  })
+module.exports = function(fileName){
+  fs.readFile(fileName,'utf8', (err, data) => {
+    if (err) throw err;
+    console.log(data);
+  });
+}

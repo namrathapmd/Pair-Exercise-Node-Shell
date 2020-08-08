@@ -9,11 +9,12 @@ const catFunc = require('./cat.js')
 process.stdin.on('data', (data) => {
  const cmd = data.toString().trim();
 
- switch(cmd) {
-    case 'pwd': cwdFunc()
-    case 'ls': lsFunc()
-    case 'cat': catFunc()
- }
+ if(cmd === 'pwd') cwdFunc()
+ else if (cmd === 'ls') lsFunc()
+ else if (cmd.slice(0,3) === 'cat') {
+   const fileName = cmd.split(' ')[1]
+   catFunc(fileName)
+}
 })
 
 
